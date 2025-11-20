@@ -2,6 +2,7 @@ import numpy as np
 import polars as pl
 from binance.client import Client
 from datetime import datetime
+from typing import List
 
 
 # Define loading of data from Binance
@@ -39,7 +40,37 @@ def get_live_historical_data(
 
         return df.sort("date")
 
+# Feature Engineering
 
+def create_time_series_transform(
+        df: pl.DataFrame,
+        price_col: str = "close",
+        volume_col: str = "volume",
+        forecast_horizon: int = 1) -> pl.DataFrame:
+
+# Calculates log returns for price and log volume changes.
+
+# Arguments:
+       # df: The input Polars DataFrame.
+       # price_col: The price column ('close').
+       # volume_col: The volume column ('volume').
+       # forecast_horizon: The shift period for the return calculation.
+
+# Returns:
+       # The DataFrame with 'close_log_return' and 'log_volume' columns added.
+
+# Calculate the log returns: log price/price.shift by forecast horizon
+
+        log_returns = ((pl.col(price_col) / pl.col(price_col).shift(forecast_horizon)).log().alias("close_log_return"))
+
+# Calculate Log Volume
+
+        log_volume = ((pl.cpl(volume_col) / pl.col(volume_col).shift(forecast_horizon)).log().alias("log_volume"))
+
+
+        df = df.with_columns(log_returns, log_volume)
+
+        return df
 
 
 
