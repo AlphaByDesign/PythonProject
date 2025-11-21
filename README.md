@@ -1,17 +1,6 @@
 # Python Feature Engineering Toolkit for Time-Series Analysis
 
-A specialized Python toolkit for **crypto data manipulation**, utilizing **Polars** for high-performance data processing. This package provides methods for securely fetching data from **Binance**, generating time-series features (like lags and log returns), and preparing the data for an **Autoregressive (AR) Model**.
-
----
-
-##  Features
-
-This repository's core logic, primarily in `src/features.py`, focuses on efficient, model-ready data creation:
-
-* **Data Ingestion:** Dedicated functions for securely connecting to the **Binance API** and extracting OHLCV (Open, High, Low, Close, Volume) data.
-* **Polars Data Prep:** Core data manipulation functions optimized for **Polars DataFrames** for superior performance and memory efficiency.
-* **Time-Series Features:** Automated generation of essential time-series features, including **Log Returns** and **Lagged Features** necessary for Autoregressive (AR) modeling.
-* **Logging:** Custom log configuration to track data flow, API calls, and detailed feature creation steps.
+A specialized Python toolkit for **crypto data manipulation**, utilizing **Polars** for data processing. This package provides methods for securely fetching data from **Binance**, generating time-series features (like lags and log returns), and preparing the data for an **Autoregressive (AR) Model**.
 
 ---
 
@@ -25,13 +14,25 @@ The primary goal of the features in this toolkit is to create a robust, high-qua
 
 ---
 
-## Getting Started
+##  Features
 
-### 1. Installation
+This modules core logic, primarily in `src/features.py`, focuses on model-ready data creation:
 
-Clone the repository to your local machine:
+* **Data Ingestion:** Dedicated functions for securely connecting to the **Binance API** and extracting OHLCV (Open, High, Low, Close, Volume) data.
+* **Polars Data Prep:** Core data manipulation functions optimized for **Polars DataFrames** for superior performance and memory efficiency.
+* **Time-Series Features:** Automated generation of essential time-series features, including **Log Returns** and **Lagged Features** necessary for Autoregressive (AR) modeling.
+* **Logging:** Custom log configuration to track data flow, API calls, and detailed feature creation steps.
 
-```bash
-git clone [https://github.com/AlphaByDesign/PythonProject.git](https://github.com/AlphaByDesign/PythonProject.git)
-cd PythonProject
+---
+
+## Visualizations
+
+This modules core logic, primarily in `src/visualization.py` focuses on displaying feature distributions,
+and a correlation matrix to the target variable.
+
+* **Seaborn Visualization:** Function related to the plotting the distribution pair-wise for the data set.
+* **Correlation Matrix:** Function related to display the absolute correlation from all variables to the target.
+
+---
+
 
